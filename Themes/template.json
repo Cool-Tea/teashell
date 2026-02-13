@@ -1,0 +1,26 @@
+{
+  "is_dark_mode": {{is_dark_mode}},
+  
+  "primary": "{{colors.primary.default.hex}}",
+  "on_primary": "{{colors.on_primary.default.hex}}",
+
+  "secondary": "{{colors.secondary.default.hex}}",
+  "on_secondary": "{{colors.on_secondary.default.hex}}",
+
+  "tertiary": "{{colors.tertiary.default.hex}}",
+  "on_tertiary": "{{colors.on_tertiary.default.hex}}",
+
+  "error": "{{colors.error.default.hex}}",
+  "on_error": "{{colors.on_error.default.hex}}",
+
+  "background": "{{colors.background.default.hex}}",
+  "on_background": "{{colors.on_background.default.hex}}",
+  "surface": "{{colors.surface.default.hex}}",
+  "on_surface": "{{colors.on_surface.default.hex}}",
+
+  "outline": "{{colors.outline.default.hex}}",
+  "shadow": "{{colors.shadow.default.hex}}",
+  "scrim": "{{colors.scrim.default.hex}}",
+
+  "source_color": "{{colors.source_color.default.hex}}"
+}
