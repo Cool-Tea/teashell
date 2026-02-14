@@ -11,7 +11,7 @@ Rectangle {
 
   color: "transparent"
 
-  // property alias  textColor: networkText.color
+  property alias  textColor: networkText.color
   property string wifiIcon: ""
   property string etheIcon: ""
   property string discIcon: ""
@@ -76,6 +76,8 @@ Rectangle {
     implicitHeight: 30
 
     target: network
+    bgColor: Color.tertiary
+    fgColor: Color.ontertiary
     text: {
       let device = Networking.devices.values[0]
       if (!device) return "Disconnected"

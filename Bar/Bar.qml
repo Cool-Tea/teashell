@@ -88,7 +88,7 @@ Scope {
           implicitHeight: 20
           leftMargin: 10
           rightMargin: 10
-          color: Color.secondary
+          color: Color.tertiary
           radius: 16
 
           RowLayout {
@@ -100,21 +100,25 @@ Scope {
 
             Battery {
               id: battery
+              textColor: Color.ontertiary
               Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
             }
 
             Backlight {
               id: backlight
+              textColor: Color.ontertiary
               Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
             }
 
             Audio {
               id: audio
+              textColor: Color.ontertiary
               Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
             }
 
             Network {
               id: network
+              textColor: Color.ontertiary
               Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
             } 
           }

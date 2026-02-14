@@ -74,6 +74,8 @@ Rectangle {
     implicitHeight: 30
 
     target: battery
+    bgColor: Color.tertiary
+    fgColor: Color.ontertiary
     text: {
       let device = UPower.displayDevice
       if (!device.ready) return errorIcon

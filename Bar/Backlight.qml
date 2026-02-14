@@ -65,6 +65,8 @@ Rectangle {
     implicitHeight: 30
 
     target: backlight
+    bgColor: Color.tertiary
+    fgColor: Color.ontertiary
     text: `${current}/${max}`
   }
 

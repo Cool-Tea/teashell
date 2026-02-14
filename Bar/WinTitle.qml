@@ -74,6 +74,8 @@ WrapperRectangle {
           implicitHeight: 30
 
           target: winIcon
+          bgColor: Color.tertiary
+          fgColor: Color.ontertiary
           text: modelData.title
           textSize: 8
           textFont: "JetBrainsMonoNerdFont"

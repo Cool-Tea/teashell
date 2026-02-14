@@ -11,8 +11,11 @@ WrapperRectangle {
   implicitHeight: 20
   leftMargin: 15
   rightMargin: 15
-  color: Color.tertiary
+  color: Color.secondary
   radius: 16
+
+  property alias bgColor: tray.color
+  property color fgColor: Color.onsecondary
 
   RowLayout {
     anchors.fill: parent
@@ -29,8 +32,10 @@ WrapperRectangle {
 
         implicitWidth: 18
         implicitHeight: 18
-        color: Color.ontertiary
+        color: fgColor
         radius: 4
+
+        visible: modelData.status !== Status.Passive
 
         Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 

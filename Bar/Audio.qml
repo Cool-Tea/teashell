@@ -12,6 +12,7 @@ Rectangle {
 
   color: "transparent"
 
+  property alias  textColor: audioText.color
   property list<string> icons: ["", "", ""]
   property string mutedIcon: "婢"
   property string errorIcon: ""
@@ -93,6 +94,8 @@ Rectangle {
     implicitHeight: 30
 
     target: audio
+    bgColor: Color.tertiary
+    fgColor: Color.ontertiary
     text: {
       let device = Pipewire.defaultAudioSink
       if (!device) return "Unknown"

@@ -58,18 +58,20 @@ Singleton {
     id: matugen
     running: true
     command: [ "matugen", "image", wallpaper, "-c", "Themes/config.toml", "-m", (color.darkMode ? "dark" : "light") ]
+    workingDirectory: ".config/quickshell/teashell"
     stdout: StdioCollector {
       onStreamFinished: {
+        console.log(matugen.workingDirectory)
         if (this.text) console.log(this.text)
       }
     }
     stderr: StdioCollector {
       onStreamFinished: {
-        if (this.text) console.log(this.text)
+        if (this.text) console.log(`matugen: ${this.text}`)
       }
     }
     onExited: (code, status) => {
-      if (code != 0) console.log(`Failed to run process with code=${code} and status='${status}'`)
+      if (code != 0) console.log(`Failed to run matugen with code=${code} and status='${status}'`)
     }
   }
 }
