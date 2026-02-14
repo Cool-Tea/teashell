@@ -17,6 +17,20 @@ Rectangle {
   property int max: 1
   property list<string> icons: ["", "", "", "", "", "", "", "", ""]
 
+  states: State {
+    name: "onHover"
+    when: backlightMouseArea.containsMouse
+    PropertyChanges {
+      backlightText { color: Color.source }
+    }
+  }
+
+  transitions: Transition {
+    to: "onHover"
+    reversible: true
+    ColorAnimation { duration: 100 }
+  }
+
   Text {
     id: backlightIcon
     anchors.left: parent.left
@@ -42,6 +56,7 @@ Rectangle {
   }
 
   MouseArea {
+    id: backlightMouseArea
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
     hoverEnabled: true

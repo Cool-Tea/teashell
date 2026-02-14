@@ -22,6 +22,20 @@ Rectangle {
     objects: [ Pipewire.defaultAudioSink ]
   }
 
+  states: State {
+    name: "onHover"
+    when: audioMouseArea.containsMouse
+    PropertyChanges {
+      audioText { color: Color.source }
+    }
+  }
+
+  transitions: Transition {
+    to: "onHover"
+    reversible: true
+    ColorAnimation { duration: 100 }
+  }
+
   Text {
     id: audioIcon
     anchors.left: parent.left
@@ -64,6 +78,7 @@ Rectangle {
   }
 
   MouseArea {
+    id: audioMouseArea
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
     hoverEnabled: true

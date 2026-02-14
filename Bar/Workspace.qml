@@ -30,8 +30,8 @@ Rectangle {
         id: workspaceRect
         implicitWidth: 9
         implicitHeight: 9
-        color: active ? "transparent" : (used ? useColor : fgColor)
-        radius: 10
+        color: active ? actColor : (used ? useColor : fgColor)
+        radius: active ? 2 : 10
 
         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
@@ -39,20 +39,58 @@ Rectangle {
         readonly property bool active: Hyprland.focusedWorkspace?.id === (index + 1)
         readonly property bool used: ws !== null
 
-        Text {
-          text: active ? "" : ""
-          color: active ? actColor : "transparent"
-          anchors.centerIn: parent
-          font.pointSize: 8
-          font.family: "JetBrainsMonoNerdFont"
+        Behavior on color {
+          ColorAnimation { duration: 200 }
+        }
+
+        Behavior on radius {
+          NumberAnimation {
+            duration: 200
+            easing.type: Easing.InOutCubic
+          }
+        }
+
+        states: State {
+          name: "onHover"
+          when: workspaceRectMouseArea.containsMouse
+          PropertyChanges {
+            workspaceRect {
+              radius: 2
+              rotation: 45
+              color: actColor
+            }
+          }
+        }
+
+        transitions: Transition {
+          to: "onHover"
+          reversible: true
+          ParallelAnimation {
+            ColorAnimation {
+              duration: 100
+              easing.type: Easing.InOutCubic
+            }
+            RotationAnimation {
+              duration: 200
+              easing.type: Easing.InOutCubic
+            }
+            NumberAnimation {
+              properties: "radius"
+              duration: 50
+              easing.type: Easing.InOutCubic
+            }
+          }
         }
 
         MouseArea {
+          id: workspaceRectMouseArea
           anchors.fill: parent
           cursorShape: Qt.PointingHandCursor
           hoverEnabled: true
           onClicked: Hyprland.dispatch(`workspace ${index + 1}`)
-          onEntered: workspaceTooltipTimer.running = true
+          onEntered: {
+            workspaceTooltipTimer.running = true
+          }
           onExited: {
             workspaceTooltipTimer.running = false
             workspaceTooltip.visible = false

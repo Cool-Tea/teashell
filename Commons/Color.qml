@@ -61,7 +61,6 @@ Singleton {
     workingDirectory: ".config/quickshell/teashell"
     stdout: StdioCollector {
       onStreamFinished: {
-        console.log(matugen.workingDirectory)
         if (this.text) console.log(this.text)
       }
     }

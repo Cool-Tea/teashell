@@ -18,6 +18,20 @@ Rectangle {
   property string upIcon: ""
   property string downIcon: ""
 
+  states: State {
+    name: "onHover"
+    when: networkMouseArea.containsMouse
+    PropertyChanges {
+      networkText { color: Color.source }
+    }
+  }
+
+  transitions: Transition {
+    to: "onHover"
+    reversible: true
+    ColorAnimation { duration: 100 }
+  }
+
   Text {
     id: networkIcon
     anchors.left: parent.left
@@ -33,7 +47,7 @@ Rectangle {
         return etheIcon
       }
     }
-    font.pointSize: 10
+    font.pointSize: 13
     font.family: "FreeSans"
   }
 
@@ -53,6 +67,7 @@ Rectangle {
   }
 
   MouseArea {
+    id: networkMouseArea
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
     hoverEnabled: true

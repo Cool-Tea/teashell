@@ -43,6 +43,44 @@ WrapperRectangle {
 
         readonly property bool active: modelData.activated
 
+        Behavior on implicitWidth {
+          NumberAnimation {
+            duration: 200
+            easing.type: Easing.InOutCubic
+          }
+        }
+
+        Behavior on color {
+          ColorAnimation { duration: 200 }
+        }
+
+        states: State {
+          name: "onHover"
+          when: winIconMouseArea.containsMouse
+          PropertyChanges {
+            winIcon {
+              implicitWidth: 30
+              color: actColor
+            }
+          }
+        }
+
+        transitions: Transition {
+          to: "onHover"
+          reversible: true
+          ParallelAnimation {
+            ColorAnimation {
+              duration: 50
+              easing.type: Easing.InOutCubic
+            }
+            NumberAnimation {
+              properties: "implicitWidth"
+              duration: 200
+              easing.type: Easing.InOutCubic
+            }
+          }
+        }
+
         IconImage {
           anchors.centerIn: parent
           source: Quickshell.iconPath(modelData.appId)
@@ -50,6 +88,7 @@ WrapperRectangle {
         }
 
         MouseArea {
+          id: winIconMouseArea
           anchors.fill: parent
           cursorShape: Qt.PointingHandCursor
           hoverEnabled: true

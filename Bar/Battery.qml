@@ -16,6 +16,20 @@ Rectangle {
   property string chargeIcon: ""
   property string errorIcon: ""
 
+  states: State {
+    name: "onHover"
+    when: batteryMouseArea.containsMouse
+    PropertyChanges {
+      batteryText { color: Color.source }
+    }
+  }
+
+  transitions: Transition {
+    to: "onHover"
+    reversible: true
+    ColorAnimation { duration: 100 }
+  }
+
   Text {
     id: batteryIcon
     anchors.left: parent.left
@@ -51,6 +65,7 @@ Rectangle {
   }
 
   MouseArea {
+    id: batteryMouseArea
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
     hoverEnabled: true

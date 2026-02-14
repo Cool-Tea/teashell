@@ -39,6 +39,24 @@ WrapperRectangle {
 
         Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
+        states: State {
+          name: "onHover"
+          when: trayItemMouseArea.containsMouse
+          PropertyChanges {
+            trayItem {
+              color: Color.source
+            }
+          }
+        }
+
+        transitions: Transition {
+          to: "onHover"
+          reversible: true
+          ColorAnimation {
+            duration: 100
+          }
+        }
+
         IconImage {
           anchors.centerIn: parent
           source: modelData.icon
@@ -46,6 +64,7 @@ WrapperRectangle {
         }
 
         MouseArea {
+          id: trayItemMouseArea
           anchors.fill: parent
           acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
           hoverEnabled: true
